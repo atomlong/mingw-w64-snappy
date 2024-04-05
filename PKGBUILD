@@ -3,18 +3,19 @@
 
 _pkgname=snappy
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.1.10
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="A fast compressor/decompressor library (mingw-w64)"
+pkgdesc='A fast compressor/decompressor library (mingw-w64)'
 arch=('any')
 url="https://google.github.io/snappy/"
 license=('BSD')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'git')
+checkdepends=('mingw-w64-wine' 'mingw-w64-zlib' 'mingw-w64-lzo' 'mingw-w64-lz4')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("git+https://github.com/google/snappy.git#tag=${pkgver}"
         'git+https://github.com/google/googletest.git')
-sha256sums=('SKIP'
+sha256sums=('99b5c9e017d904b88ce09369c0dd3fcaf07beaad49e3223d346e1fbcfcec3731'
             'SKIP')
 
 _srcdir="${_pkgname}"
@@ -55,7 +56,7 @@ check() {
 	done
 }
 
-package () {
+package() {
 	for _arch in ${_architectures}; do
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a

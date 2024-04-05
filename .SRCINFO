@@ -1,19 +1,23 @@
 pkgbase = mingw-w64-snappy
 	pkgdesc = A fast compressor/decompressor library (mingw-w64)
-	pkgver = 1.1.10
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://google.github.io/snappy/
 	arch = any
 	license = BSD
+	checkdepends = mingw-w64-wine
+	checkdepends = mingw-w64-zlib
+	checkdepends = mingw-w64-lzo
+	checkdepends = mingw-w64-lz4
 	makedepends = mingw-w64-cmake
 	makedepends = git
 	depends = mingw-w64-crt
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://github.com/google/snappy.git#tag=1.1.10
+	source = git+https://github.com/google/snappy.git#tag=1.2.0
 	source = git+https://github.com/google/googletest.git
-	sha256sums = SKIP
+	sha256sums = 99b5c9e017d904b88ce09369c0dd3fcaf07beaad49e3223d346e1fbcfcec3731
 	sha256sums = SKIP
 
 pkgname = mingw-w64-snappy
