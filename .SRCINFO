@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-snappy
 	pkgdesc = A fast compressor/decompressor library (mingw-w64)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://google.github.io/snappy/
 	arch = any
 	license = BSD

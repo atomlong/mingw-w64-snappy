@@ -4,7 +4,7 @@
 _pkgname=snappy
 pkgname=mingw-w64-${_pkgname}
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast compressor/decompressor library (mingw-w64)'
 arch=('any')
 url="https://google.github.io/snappy/"
@@ -13,8 +13,9 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'git')
 checkdepends=('mingw-w64-wine' 'mingw-w64-zlib' 'mingw-w64-lzo' 'mingw-w64-lz4')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("git+https://github.com/google/snappy.git#tag=${pkgver}"
-        'git+https://github.com/google/googletest.git')
+source=(
+	"git+https://github.com/google/snappy.git#tag=${pkgver}"
+	'git+https://github.com/google/googletest.git')
 sha256sums=('99b5c9e017d904b88ce09369c0dd3fcaf07beaad49e3223d346e1fbcfcec3731'
             'SKIP')
 
@@ -23,7 +24,9 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE='Release'
 	-DCMAKE_C_FLAGS_RELEASE='-DNDEBUG'
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
-	-DSNAPPY_BUILD_BENCHMARKS=OFF )
+	-DCMAKE_CXX_STANDARD=23
+	-DSNAPPY_BUILD_BENCHMARKS=OFF
+	-DINSTALL_GTEST=OFF )
 
 prepare() {
 	cd "${_srcdir}"
